@@ -7,7 +7,9 @@ const counter = document.getElementById("my-counter");
 // Create function for increasing the click count
 const updateClickCount = () => {
   clickCount++;
-  counter.innerHTML = `Clicked ${clickCount} times!`;
+  // The line below used to be span.innerHTML, which is vulnerable to cross-site
+  // scripting attacks. Below the the correct line to use. :)
+  counter.textContent = `Clicked ${clickCount} times!`;
 };
 
 // Listen to mouse clicks on the button and invoke updateClickCount
